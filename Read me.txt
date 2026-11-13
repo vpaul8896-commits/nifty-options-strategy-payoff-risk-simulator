@@ -1,0 +1,227 @@
+# NIFTY Options Strategy Payoff & Risk Simulator
+
+**Tools:** Microsoft Excel 2021 | Microsoft Power BI  
+**Project Type:** Financial Modelling & Derivatives Analytics
+
+## 1. Project Overview
+
+The NIFTY Options Strategy Payoff & Risk Simulator is an Excel-based financial modelling tool integrated with Microsoft Power BI. It is designed to analyse the potential profit and loss of different NIFTY options strategies at expiry.
+
+Users can enter NIFTY spot prices, option types, strike prices, premiums, positions and lot quantities. The simulator calculates individual option-leg P&L, combined strategy payoff, breakeven points and risk-reward metrics.
+
+The project also includes scenario analysis and interactive dashboards to help users understand the risk and reward characteristics of options strategies.
+
+## 2. Project Objectives
+
+- Develop an Excel-based options payoff simulator.
+- Analyse different NIFTY options strategies.
+- Automate individual option-leg and combined P&L calculations.
+- Calculate maximum profit, maximum loss and breakeven points.
+- Evaluate risk and reward characteristics.
+- Perform scenario analysis under different NIFTY price movements.
+- Visualise financial results using Power BI.
+
+## 3. Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Microsoft Excel 2021 | Financial calculations, formulas, inputs and dashboard |
+| Microsoft Power BI | Data visualisation and interactive reporting |
+
+## 4. Supported Options Strategies
+
+The simulator is designed to support 11 options strategies:
+
+1. Long Call
+2. Long Put
+3. Short Call
+4. Short Put
+5. Bull Call Spread
+6. Bear Put Spread
+7. Long Straddle
+8. Short Straddle
+9. Long Strangle
+10. Short Strangle
+11. Iron Condor
+
+## 5. Excel Workbook Structure
+
+| Worksheet | Description |
+|---|---|
+| Dashboard | Displays key performance indicators and payoff chart. |
+| Strategy_Input | Accepts NIFTY and options strategy inputs. |
+| Strategy_Legs | Organises individual option legs. |
+| Payoff_Calculation | Calculates option-leg and combined P&L. |
+| Risk_Analysis | Calculates risk metrics and breakeven points. |
+| Strategy_Comparison | Provides a structured area for strategy comparison. |
+| Scenario_Analysis | Evaluates P&L under different market movements. |
+| Lists | Stores dropdown and validation lists. |
+| PowerBI_Data | Contains structured tables for Power BI. |
+
+## 6. Key Features
+
+### Strategy Inputs
+- Strategy selection through dropdown.
+- NIFTY spot price and expiry date.
+- Option type selection (Call/Put).
+- Buy/Sell position selection.
+- Strike price and premium inputs.
+- Lot size and quantity inputs.
+- Support for up to four option legs.
+
+### Payoff Calculation
+- Individual option-leg P&L.
+- Combined strategy P&L.
+- Expiry-price payoff table.
+- Strategy payoff curve.
+- Analysis across 41 expiry-price scenarios, from 80% to 120% of the entered NIFTY spot price in 1% intervals.
+
+### Risk Analysis
+- Maximum profit within the tested price range.
+- Maximum loss within the tested price range.
+- Net premium.
+- Breakeven point(s).
+- Risk-reward ratio.
+
+### Scenario Analysis
+Evaluates the selected strategy under seven NIFTY price movements:
+
+- -10%
+- -5%
+- -2%
+- 0%
+- +2%
+- +5%
+- +10%
+
+### Power BI Dashboard
+
+The Power BI report contains three pages:
+
+1. Overview
+2. Scenario Analysis
+3. Payoff Curve
+
+## 7. Calculation Methodology
+
+**Call Intrinsic Value**
+
+MAX(Expiry Price - Strike Price, 0)
+
+**Put Intrinsic Value**
+
+MAX(Strike Price - Expiry Price, 0)
+
+**Long Option P&L**
+
+(Intrinsic Value - Premium) × Quantity
+
+**Short Option P&L**
+
+(Premium - Intrinsic Value) × Quantity
+
+**Total Strategy P&L**
+
+Sum of the P&L of all active option legs.
+
+**Breakeven Point**
+
+The expiry price at which the combined strategy P&L equals zero. The simulator identifies breakeven points using the calculated payoff values.
+
+## 8. Practical Example: Bull Call Spread
+
+**Input Details**
+
+| Parameter | Value |
+|---|---:|
+| NIFTY Spot Price | 26,000 |
+| Buy Call Strike | 26,000 |
+| Buy Call Premium | ₹250 |
+| Sell Call Strike | 26,500 |
+| Sell Call Premium | ₹100 |
+| Lot Size | 65 |
+| Number of Lots | 1 |
+
+**Calculated Results**
+
+| Metric | Result |
+|---|---:|
+| Net Debit | ₹9,750 |
+| Maximum Profit | ₹22,750 |
+| Maximum Loss | -₹9,750 |
+| Breakeven | 26,150 |
+| Risk-Reward Ratio | 2.33 |
+
+This example demonstrates a Bull Call Spread with limited risk and limited reward.
+
+## 9. Power BI Integration
+
+The Excel workbook is connected to Power BI through structured tables in the PowerBI_Data worksheet.
+
+**Data tables:**
+- `tblScenarioData`
+- `tblRiskSummary`
+- `tblPayoffCurve`
+
+**Data workflow:**
+
+1. Enter or modify strategy inputs in Excel.
+2. Save the Excel workbook.
+3. Open the connected Power BI report.
+4. Select Home → Refresh.
+5. Review the updated dashboard pages.
+
+**Note:** Power BI visualises the output generated by the currently selected strategy in Excel. It does not independently calculate all 11 strategies simultaneously.
+
+## 10. How to Use the Simulator
+
+1. Open the Excel workbook.
+2. Navigate to Strategy_Input.
+3. Enter NIFTY spot price and expiry date.
+4. Enter lot size and number of lots.
+5. Select the required options strategy.
+6. Enter option type, position, strike price and premium for each active leg.
+7. Review results in Payoff_Calculation.
+8. Review risk metrics in Risk_Analysis.
+9. Analyse market movements in Scenario_Analysis.
+10. Review the Excel Dashboard.
+11. Save the workbook and refresh Power BI.
+
+## 11. Project Screenshots
+
+Screenshots of the following components are included in the Screenshots folder:
+
+- Excel Dashboard
+- Strategy Input
+- Payoff Calculation
+- Risk Analysis
+- Scenario Analysis
+- Power BI Overview
+- Power BI Scenario Analysis
+- Power BI Payoff Curve
+
+## 12. Assumptions and Limitations
+
+- The simulator calculates options payoff at expiry only.
+- It does not use live NIFTY market data or live option-chain prices.
+- It does not calculate mark-to-market P&L before expiry.
+- Option Greeks such as Delta, Gamma, Theta and Vega are not calculated.
+- Implied volatility and time decay are not modelled.
+- Brokerage, taxes, exchange charges and slippage are excluded.
+- Payoff analysis is limited to the configured 80%-120% expiry-price range.
+- Maximum and minimum P&L are based on the tested price grid and may not represent theoretical limits outside that range.
+- The risk-free-rate input is included but is not used in the basic expiry-payoff formulas.
+- Power BI displays the currently selected strategy's Excel-generated output.
+
+## 13. Disclaimer
+
+This project is developed for educational, analytical and portfolio-demonstration purposes only. It is not investment advice or a recommendation to buy or sell any options contract. Options trading involves substantial financial risk. All calculations and inputs should be independently verified before making financial decisions.
+
+## 14. Author
+
+**G. Victor Paul**  
+MBA Finance Student  
+Acharya Nagarjuna University
+
+**Project:** NIFTY Options Strategy Payoff & Risk Simulator  
+**Tools:** Microsoft Excel 2021 and Microsoft Power BI
